@@ -25,7 +25,7 @@ public class HelloController {
     public String create() {
         try {
             Product newProduct = new Product();
-            newProduct.setName("Pomidor");
+            newProduct.setName("JakisProdukt");
             newProduct.setPrice(3.50);
             newProduct.setQuantity(10);
             productDAO.addProduct(newProduct);

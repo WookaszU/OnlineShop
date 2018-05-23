@@ -10,7 +10,7 @@ public class Product implements Serializable {
 
 
     @Id
-    @Column(name = "id")
+    @Column(name = "product_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -21,7 +21,7 @@ public class Product implements Serializable {
     private double price;
 
     @Column(name = "quantity", nullable = false)
-    private double quantity;
+    private int quantity;
 
     @Lob
     @Column(name = "image", length = Integer.MAX_VALUE)
@@ -50,11 +50,11 @@ public class Product implements Serializable {
         this.price = price;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(double quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
