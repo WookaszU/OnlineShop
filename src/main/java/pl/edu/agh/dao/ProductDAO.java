@@ -23,9 +23,8 @@ public class ProductDAO {
         session.flush();
     }
 
-    public Product getProduct(){
+    public Product getProduct(int productID){
         Session session = sessionFactory.getCurrentSession();
-        Integer product_id = 1;
-        return session.get(Product.class, product_id);
+        return session.get(Product.class, productID);
     }
 }
