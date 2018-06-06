@@ -1,45 +1,79 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--<head>-->
+    <!--<title>Product List</title>-->
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/styles.css}">-->
+    <!--<meta charset="UTF-8">-->
+    <!--&lt;!&ndash;<style>&ndash;&gt;-->
+        <!--&lt;!&ndash;body {&ndash;&gt;-->
+            <!--&lt;!&ndash;/*background-image: url("/images/koalla.jpg");*/&ndash;&gt;-->
+            <!--&lt;!&ndash;/*background-repeat: no-repeat;*/&ndash;&gt;-->
+        <!--&lt;!&ndash;}&ndash;&gt;-->
+    <!--&lt;!&ndash;</style>&ndash;&gt;-->
+<!--</head>-->
+<!--<body>-->
+    <!--<th:block th:include="fragments/header">Header</th:block>-->
+
+    <!--<div class="page-title">Product list</div>-->
+
+    <!--<h1>Products informations</h1>-->
+
+    <!--<div class="flex">-->
+        <!--<div class="products-container" th:each="product : ${products}">-->
+                    <!--<section>-->
+                        <!--<img src="/images/statek.png" alt="description" />-->
+                        <!--<h2><span th:utext="${product.name}"></span></h2>-->
+                        <!--<p>Product description</p>-->
+                        <!--<aside>-->
+                            <!--<ul>-->
+                                <!--<li><span th:utext="${#numbers.formatDecimal(product.price,3,2,'COMMA')}"></span></li>-->
+                            <!--</ul>-->
+                            <!--<button class="buy-button">Buy</button>-->
+                        <!--</aside>-->
+                    <!--</section>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<th:block th:include="fragments/footer">Footer</th:block>-->
+<!--</body>-->
+<!--</html>-->
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Product List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
-    <meta charset="UTF-8">
-    <style>
-        body {
-            background-image: url("/images/koalla.jpg");
-            /*background-repeat: no-repeat;*/
-        }
-    </style>
 </head>
 <body>
+<!--<nav>-->
+    <!--<ul>-->
+        <!--<li><a href="#" title="Home">&#9729;</a></li>-->
+        <!--<li><a href="#" class="active" title="Cameras">Cameras</a></li>-->
+        <!--<li><a href="#" title="About">About</a></li>-->
+        <!--<li><a href="#" title="Contact">Contact</a></li>-->
+    <!--</ul>-->
+<!--</nav>-->
+<header>
     <th:block th:include="fragments/header">Header</th:block>
-
-    <div class="page-title">Product list</div>
-
-    <h1>Products informations</h1>
-
-    <div class="products-container" th:each="product : ${products}">
-        <ul>
-            <!--<li><img class="product-image"-->
-                     <!--th:src="@{|/productImage?code=${prodInfo.code}|}" /></li>-->
-            <!--<li>Name: <span th:utext="${product.name}"></span></li>-->
-            <!--<li>Quantity: <span th:utext="${product.quantity}"></span></li>-->
-            <!--<li>Price: <span th:utext="${#numbers.formatDecimal(product.price,3,2,'COMMA')}"></span></li>-->
-            <!--<li>-->
-                <!--<a th:href="@{|/buyProduct?code=${product.name}|}">Buy Now</a>-->
-            <!--</li>-->
-            <div class="product-card">
-                <div class="product-image">
-                    <img th:src="@{/images/statek.png}">
-                </div>
-                <div class="product-info">
-                    <h5><span th:utext="${product.name}"></h5>
-                    <h6><span th:utext="${#numbers.formatDecimal(product.price,3,2,'COMMA')}"></span></h6>
-                </div>
-            </div>
-        </ul>
-    </div>
-
-    <th:block th:include="fragments/footer">Footer</th:block>
+</header>
+<div class="flex">
+    <th:block th:each="product : ${products}">
+        <section>
+            <img src="/images/statek.png" alt="Smartphone" />
+            <h2><span th:utext="${product.name}"></span></h2>
+            <p>Tutaj bedzie opis produktu. Trzeba dodac do bazy.</p>
+            <aside>
+                <ul>
+                    <li>Price: <span th:utext="${#numbers.formatDecimal(product.price,0,'COMMA',2,'POINT')}"></span> €</li>
+                    <li>In Stock</li>
+                </ul>
+                <button class="cart-button">Add to Cart</button>
+            </aside>
+        </section>
+    </th:block>
+</div>
 </body>
 </html>

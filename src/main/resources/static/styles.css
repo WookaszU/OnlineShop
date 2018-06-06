@@ -1,45 +1,258 @@
 html {
-    background: grey;
+    background: #f5f1e8;
 }
 .page-title  {
     font-size:120%;
     text-align: left;
     margin:10px 0px;
 }
-.header-container {
-    text-align: left;
-    border-bottom: 1px solid #ccc;
-    position: relative;
-    background: #5f5f5f;
-    color: white;
-}
-.header-container .header-bar  {
-    position: absolute;
-    right: 10px;
-    bottom: 20px;
-}
-.header-container .header-bar  a  {
-    color: white;
-}
-.footer-container {
-    text-align: center;
-    margin-top: 10px;
-    padding: 5px 0px 0px 0px;
-    border-top: 1px solid #ccc;
-}
-.site-name {
-    font-size:200%;
-    margin:10px 10px 10px 0px;
-    padding: 5px;
-}
-.products-container {
+/*.header-container {*/
+    /*text-align: left;*/
+    /*border-bottom: 1px solid #ccc;*/
+    /*position: relative;*/
+    /*background: #5f5f5f;*/
+    /*color: white;*/
+/*}*/
+/*.header-container .header-bar  {*/
+    /*position: absolute;*/
+    /*right: 10px;*/
+    /*bottom: 20px;*/
+/*}*/
+/*.header-container .header-bar  a  {*/
+    /*color: white;*/
+/*}*/
+/*.footer-container {*/
+    /*text-align: center;*/
+    /*margin-top: 10px;*/
+    /*padding: 5px 0px 0px 0px;*/
+    /*border-top: 1px solid #ccc;*/
+/*}*/
+/*.site-name {*/
+    /*font-size:200%;*/
+    /*margin:10px 10px 10px 0px;*/
+    /*padding: 5px;*/
+/*}*/
+/*.products-container {*/
+    /*display: flex;*/
+    /*flex-wrap: wrap;*/
+/*}*/
+/*.product-card {*/
+    /*padding: 2%;*/
+    /*flex-grow: 1;*/
+    /*flex-basis: 16%;*/
+
+    /*display: flex;*/
+/*}*/
+/*.product-image {*/
+    /*!*width: 120px;*!*/
+    /*!*height: 80px;*!*/
+    /*max-width: 100%;*/
+/*}*/
+/*.product-info {*/
+    /*margin-top: auto;*/
+/*}*/
+/*.body {*/
+    /*background-image: url("images/koalla.jpg")*/
+/*}*/
+
+
+/*************************************************************/
+
+/*.flex {*/
+    /*display: flex; !* Make products flex in row direction (default) *!*/
+    /*flex-wrap: wrap; !* Make products overflow on new row *!*/
+    /*justify-content: center; !* Or space-between or space-around *!*/
+/*}*/
+
+/*.flex > section {*/
+    /*flex: 1 1 0; !* Prevent the extra space around content *!*/
+    /*text-align: center; !* Align text on center *!*/
+    /*display: flex; !* Display as flex *!*/
+    /*flex-direction: column; !* Display flex in column *!*/
+    /*align-items: center; !* Align items on center *!*/
+    /*max-width: 400px; !* Set max-width so the last items will behave in a more traditional way *!*/
+/*}*/
+
+/*.flex > section > p {*/
+    /*flex-grow: 1; !* Keep p's same size *!*/
+    /*display: block;*/
+/*}*/
+
+/*ul {*/
+    /*display: flex; !* Display specs in flex-row *!*/
+    /*justify-content: center; !* Specs to start and end of row *!*/
+/*}*/
+
+/*.buy-button {*/
+    /*display: inline-block;*/
+    /*padding: 15px 25px;*/
+    /*font-size: 24px;*/
+    /*cursor: pointer;*/
+    /*text-align: center;*/
+    /*text-decoration: none;*/
+    /*outline: none;*/
+    /*color: #fff;*/
+    /*background-color: #4CAF50;*/
+    /*border: none;*/
+    /*border-radius: 15px;*/
+    /*box-shadow: 0 9px #999;*/
+/*}*/
+
+/*.buy-button:hover {background-color: #3e8e41}*/
+
+/*.buy-button:active {*/
+    /*background-color: #3e8e41;*/
+    /*box-shadow: 0 5px #666;*/
+    /*transform: translateY(4px);*/
+/*}*/
+
+
+
+/* Flex-related code */
+.flex {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center; /* Or space-between or space-around */
 }
-.product-image {
-    width: 120px;
-    height: 80px;
+
+.flex > section {
+    align-items: center;
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    text-align: center;
+    max-width: 400px;
 }
-.body {
-    background-image: url("images/koalla.jpg")
+
+.flex > section > p {
+    flex-grow: 1;
 }
+
+/* This rule ist just because of the responsive images */
+@media (max-width: 1600px) {
+    .flex > section {
+        max-width: 250px;
+    }
+}
+
+.flex ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex aside {
+    width: 100%;
+}
+
+/* Basic styling for UI */
+
+body {
+    font: 16px "Titillium Web", sans-serif;
+    margin: 0;
+}
+
+img {
+    width: 400px;
+    border-radius: 2px;
+}
+
+@media (max-width: 1600px) {
+    img{
+        width: 250px;
+    }
+}
+
+nav {
+    background: #667f99;
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    vertical-align: center;
+}
+
+nav ul li {
+    flex-grow: 1;
+    vertical-align: center;
+}
+
+nav ul li a {
+    text-align: center;
+    color: #fff;
+    padding: 0.5em;
+    display: block;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+nav ul li a.active {
+    background: #24006B;
+}
+
+nav ul li a:hover {
+    background: #AA80FF;
+    color: #000;
+    font-weight: 700;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    color: #777380;
+    font-weight: 200;
+    font-size: 35px;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.flex > section {
+    background: #fff;
+    padding: 1em;
+    margin: 0.5em;
+    border-radius: 4px;
+}
+
+.cart-button {
+    background: #009999 url(http://i.imgur.com/RWKrr8S.png);
+    background-repeat: no-repeat;
+    background-position: 2em 50%;
+    background-size: 2em;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 13px;
+    padding: 1.5em 3em;
+    padding-left: 6em;
+    text-transform: uppercase;
+    display: block;
+    width: 100%;
+}
+
+cart-button:hover {
+    background-color: #006B6B;
+    background-size: 3em;
+    background-position: 1.5em 50%;
+}
+
+.flex ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.flex li {
+    background: #eee;
+    font-weight: 700;
+    padding: 0.3em 0.6em;
+    border-radius: 1em;
+}
+
