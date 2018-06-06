@@ -172,19 +172,20 @@ nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    vertical-align: center;
+    align-items: center;
 }
 
 nav ul li {
     flex-grow: 1;
     vertical-align: center;
+    display: inline-block;
 }
 
 nav ul li a {
+    display: block;
     text-align: center;
     color: #fff;
     padding: 0.5em;
-    display: block;
     text-transform: uppercase;
     text-decoration: none;
 }
