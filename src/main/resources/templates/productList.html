@@ -1,22 +1,45 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Thymeleaf tutorial: exercise 2</title>
-    <link rel="stylesheet" href="../../../css/main-static.css" th:href="@{/css/main.css}" />
-    <meta charset="utf-8" />
+    <title>Product List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+    <meta charset="UTF-8">
+    <style>
+        body {
+            background-image: url("/images/koalla.jpg");
+            /*background-repeat: no-repeat;*/
+        }
+    </style>
 </head>
 <body>
-<h1>Products informations</h1>
-<h2>Product</h2>
-<dl>
-    <dt>Product name</dt>
-    <dd th:text="${name}">Default</dd>
+    <th:block th:include="fragments/header">Header</th:block>
 
-    <dt>Product price</dt>
-    <dd th:text="${price}">350</dd>
+    <div class="page-title">Product list</div>
 
-    <dt>Product quantity</dt>
-    <dd th:text="${quantity}">15</dd>
-</dl>
+    <h1>Products informations</h1>
+
+    <div class="products-container" th:each="product : ${products}">
+        <ul>
+            <!--<li><img class="product-image"-->
+                     <!--th:src="@{|/productImage?code=${prodInfo.code}|}" /></li>-->
+            <!--<li>Name: <span th:utext="${product.name}"></span></li>-->
+            <!--<li>Quantity: <span th:utext="${product.quantity}"></span></li>-->
+            <!--<li>Price: <span th:utext="${#numbers.formatDecimal(product.price,3,2,'COMMA')}"></span></li>-->
+            <!--<li>-->
+                <!--<a th:href="@{|/buyProduct?code=${product.name}|}">Buy Now</a>-->
+            <!--</li>-->
+            <div class="product-card">
+                <div class="product-image">
+                    <img th:src="@{/images/statek.png}">
+                </div>
+                <div class="product-info">
+                    <h5><span th:utext="${product.name}"></h5>
+                    <h6><span th:utext="${#numbers.formatDecimal(product.price,3,2,'COMMA')}"></span></h6>
+                </div>
+            </div>
+        </ul>
+    </div>
+
+    <th:block th:include="fragments/footer">Footer</th:block>
 </body>
 </html>

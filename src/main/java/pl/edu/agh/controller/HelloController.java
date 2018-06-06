@@ -2,13 +2,13 @@ package pl.edu.agh.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.agh.dao.ProductDAO;
 import pl.edu.agh.entity.Product;
+
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 public class HelloController {
@@ -50,9 +50,26 @@ public class HelloController {
         modelAndView.addObject("price", x.getPrice());
         modelAndView.addObject("quantity", x.getQuantity());
 
-
         return modelAndView;
 
+    }
+
+
+    @RequestMapping("/products")
+    @ResponseBody
+    public ModelAndView productList() {
+        List<Product> products = productDAO.getAllProducts();
+
+        ModelAndView modelAndView = new ModelAndView("/productList");
+        modelAndView.addObject("products", products);
+
+        return modelAndView;
+    }
+
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    String index(Principal principal) {
+        return principal != null ? "/homeSignedIn" : "/homeNotSignedIn";
     }
 
 
