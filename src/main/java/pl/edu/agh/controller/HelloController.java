@@ -9,6 +9,7 @@ import pl.edu.agh.entity.Product;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class HelloController {
@@ -61,6 +62,21 @@ public class HelloController {
         List<Product> products = productDAO.getAllProducts();
 
         ModelAndView modelAndView = new ModelAndView("/productList");
+        modelAndView.addObject("products", products);
+
+        return modelAndView;
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/cart")
+    public ModelAndView shoppingCart(@RequestBody String payload) {
+
+        System.out.println(payload);
+
+        List<Product> products = productDAO.getAllProducts();
+
+        ModelAndView modelAndView = new ModelAndView("/shoppingCart");
         modelAndView.addObject("products", products);
 
         return modelAndView;

@@ -1,112 +1,11 @@
 html {
-    background: #f5f1e8;
+    background: #FFFFFF;
 }
 .page-title  {
     font-size:120%;
     text-align: left;
     margin:10px 0px;
 }
-/*.header-container {*/
-    /*text-align: left;*/
-    /*border-bottom: 1px solid #ccc;*/
-    /*position: relative;*/
-    /*background: #5f5f5f;*/
-    /*color: white;*/
-/*}*/
-/*.header-container .header-bar  {*/
-    /*position: absolute;*/
-    /*right: 10px;*/
-    /*bottom: 20px;*/
-/*}*/
-/*.header-container .header-bar  a  {*/
-    /*color: white;*/
-/*}*/
-/*.footer-container {*/
-    /*text-align: center;*/
-    /*margin-top: 10px;*/
-    /*padding: 5px 0px 0px 0px;*/
-    /*border-top: 1px solid #ccc;*/
-/*}*/
-/*.site-name {*/
-    /*font-size:200%;*/
-    /*margin:10px 10px 10px 0px;*/
-    /*padding: 5px;*/
-/*}*/
-/*.products-container {*/
-    /*display: flex;*/
-    /*flex-wrap: wrap;*/
-/*}*/
-/*.product-card {*/
-    /*padding: 2%;*/
-    /*flex-grow: 1;*/
-    /*flex-basis: 16%;*/
-
-    /*display: flex;*/
-/*}*/
-/*.product-image {*/
-    /*!*width: 120px;*!*/
-    /*!*height: 80px;*!*/
-    /*max-width: 100%;*/
-/*}*/
-/*.product-info {*/
-    /*margin-top: auto;*/
-/*}*/
-/*.body {*/
-    /*background-image: url("images/koalla.jpg")*/
-/*}*/
-
-
-/*************************************************************/
-
-/*.flex {*/
-    /*display: flex; !* Make products flex in row direction (default) *!*/
-    /*flex-wrap: wrap; !* Make products overflow on new row *!*/
-    /*justify-content: center; !* Or space-between or space-around *!*/
-/*}*/
-
-/*.flex > section {*/
-    /*flex: 1 1 0; !* Prevent the extra space around content *!*/
-    /*text-align: center; !* Align text on center *!*/
-    /*display: flex; !* Display as flex *!*/
-    /*flex-direction: column; !* Display flex in column *!*/
-    /*align-items: center; !* Align items on center *!*/
-    /*max-width: 400px; !* Set max-width so the last items will behave in a more traditional way *!*/
-/*}*/
-
-/*.flex > section > p {*/
-    /*flex-grow: 1; !* Keep p's same size *!*/
-    /*display: block;*/
-/*}*/
-
-/*ul {*/
-    /*display: flex; !* Display specs in flex-row *!*/
-    /*justify-content: center; !* Specs to start and end of row *!*/
-/*}*/
-
-/*.buy-button {*/
-    /*display: inline-block;*/
-    /*padding: 15px 25px;*/
-    /*font-size: 24px;*/
-    /*cursor: pointer;*/
-    /*text-align: center;*/
-    /*text-decoration: none;*/
-    /*outline: none;*/
-    /*color: #fff;*/
-    /*background-color: #4CAF50;*/
-    /*border: none;*/
-    /*border-radius: 15px;*/
-    /*box-shadow: 0 9px #999;*/
-/*}*/
-
-/*.buy-button:hover {background-color: #3e8e41}*/
-
-/*.buy-button:active {*/
-    /*background-color: #3e8e41;*/
-    /*box-shadow: 0 5px #666;*/
-    /*transform: translateY(4px);*/
-/*}*/
-
-
 
 /* Flex-related code */
 .flex {
@@ -163,7 +62,7 @@ img {
 }
 
 nav {
-    background: #667f99;
+    background: #d1cbc1;
 }
 
 nav ul {
@@ -184,7 +83,7 @@ nav ul li {
 nav ul li a {
     display: block;
     text-align: center;
-    color: #fff;
+    color: #333bff;
     padding: 0.5em;
     text-transform: uppercase;
     text-decoration: none;
@@ -256,4 +155,3 @@ cart-button:hover {
     padding: 0.3em 0.6em;
     border-radius: 1em;
 }
-
