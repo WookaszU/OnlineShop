@@ -39,7 +39,6 @@ public class ProductDAO {
         String hql = "FROM Product";
         Query query = session.createQuery(hql);
         List<Product> products = query.list();
-        //List<Product> products = session.createCriteria(Product.class).list();
         return products;
     }
 }

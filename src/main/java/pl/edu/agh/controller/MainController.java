@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.agh.dao.ProductDAO;
 import pl.edu.agh.entity.Product;
+import pl.edu.agh.model.ProductData;
+import pl.edu.agh.model.ShoppingCart;
+import pl.edu.agh.utils.Utils;
 
-import java.security.Principal;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
 
 @RestController
-public class HelloController {
+public class MainController {
 
     @Autowired
     private ProductDAO productDAO;
@@ -38,21 +40,15 @@ public class HelloController {
         catch (Exception ex) {
             return "Error creating the product: " + ex.toString();
         }
-        return "Product succesfully created!";
+        return "ProductData succesfully created!";
     }
 
 
     @RequestMapping(value="/viewProduct/{productID}")
     @ResponseBody
     public ModelAndView view(@PathVariable int productID) {
-        Product x = productDAO.getProduct(productID);
-        ModelAndView modelAndView = new ModelAndView("/productList");
-        modelAndView.addObject("name", x.getName());
-        modelAndView.addObject("price", x.getPrice());
-        modelAndView.addObject("quantity", x.getQuantity());
 
-        return modelAndView;
-
+        return null;
     }
 
 
@@ -71,6 +67,8 @@ public class HelloController {
     @ResponseBody
     @RequestMapping("/cart")
     public ModelAndView shoppingCart(@RequestBody String payload) {
+        //HttpServletRequest request,
+        //@ModelAttribute("shopCart")ShoppingCart shoppingCart
 
         System.out.println(payload);
 
@@ -83,12 +81,20 @@ public class HelloController {
     }
 
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    String index(Principal principal) {
-        return principal != null ? "/homeSignedIn" : "/homeNotSignedIn";
+    @ResponseBody
+    @RequestMapping("/buyProduct")
+    public String buyProduct(HttpServletRequest request,
+                                   @RequestParam(value = "prodid", defaultValue = "")String productId){
+        System.out.println("buy product!");
+
+        if(productId != null && productId.length() > 0){
+            Product product = productDAO.getProduct(Integer.parseInt(productId));
+
+            if(product != null)
+                Utils.getCartInSession(request).addProduct(new ProductData(product));
+        }
+        return "redirect:/cart";
     }
-
-
 
 
 }
