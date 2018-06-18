@@ -67,15 +67,16 @@
 <div class="flex">
     <th:block th:each="product : ${products}">
         <section>
-            <img src="/images/exampleProductPhoto.png" alt="ProductPhoto" />
+            <!--<img src="/images/exampleProductPhoto.png" alt="ProductPhoto" />-->
+            <img class="info" th:attr="src=@{'data:image/jpeg;base64,'+${product.image}}" />
             <h2><span th:utext="${product.name}"></span></h2>
-            <p>Tutaj bedzie opis produktu. Trzeba dodac do bazy.</p>
+            <p><span th:utext="${product.description}"></span></p>
             <aside>
                 <ul>
-                    <li>Price: <span th:utext="${#numbers.formatDecimal(product.price,0,'COMMA',2,'POINT')}"></span> €</li>
-                    <li>In Stock</li>
+                    <li>Cena: <span th:utext="${#numbers.formatDecimal(product.price,0,'COMMA',2,'POINT')}"></span></li>
+                    <li>Sztuk: <span th:utext="${product.quantity}"></span></li>
                 </ul>
-                <button class="cart-button" th:onclick="'addToList(\''+${product.id}+'\')'">Add to Cart</button>
+                <button class="cart-button" th:onclick="'addToList(\''+${product.id}+'\')'">Do koszyka</button>
             </aside>
         </section>
     </th:block>

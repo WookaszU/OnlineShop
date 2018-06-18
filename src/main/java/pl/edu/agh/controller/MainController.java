@@ -66,11 +66,11 @@ public class MainController {
 
     @ResponseBody
     @RequestMapping("/cart")
-    public ModelAndView shoppingCart(@RequestBody String payload) {
+    public ModelAndView shoppingCart(){//@RequestBody String payload) {
         //HttpServletRequest request,
         //@ModelAttribute("shopCart")ShoppingCart shoppingCart
 
-        System.out.println(payload);
+        //System.out.println(payload);
 
         List<Product> products = productDAO.getAllProducts();
 
