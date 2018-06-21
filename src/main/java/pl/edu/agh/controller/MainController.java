@@ -1,7 +1,7 @@
 package pl.edu.agh.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.agh.dao.ProductDAO;
@@ -22,6 +22,17 @@ public class MainController {
     @RequestMapping("/")
     public String index() {
         return "Hello, it is working!";
+    }
+
+
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "login";
+    }
+
+    @GetMapping("/user")
+    public String userIndex() {
+        return "user/index";
     }
 
 
