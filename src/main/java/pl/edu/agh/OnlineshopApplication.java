@@ -14,8 +14,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 		DataSourceAutoConfiguration.class,
 		DataSourceTransactionManagerAutoConfiguration.class,
 		HibernateJpaAutoConfiguration.class })
-//@EnableJpaRepositories(basePackages = { "pl.edu.agh.dao", "pl.edu.agh.dto",
-//		"pl.edu.agh.entity", "pl.edu.agh.repository" })
+@EnableJpaRepositories(basePackages = { "pl.edu.agh.dao", "pl.edu.agh.dto",
+		"pl.edu.agh.entity", "pl.edu.agh.repository"}, entityManagerFactoryRef = "sessionFactory")
 public class OnlineshopApplication {
 
 	public static void main(String[] args) {
