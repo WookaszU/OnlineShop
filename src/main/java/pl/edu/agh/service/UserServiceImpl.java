@@ -2,6 +2,7 @@ package pl.edu.agh.service;
 
 import pl.edu.agh.entity.Role;
 import pl.edu.agh.entity.User;
+import pl.edu.agh.repository.UserRepo;
 import pl.edu.agh.repository.UserRepository;
 import pl.edu.agh.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +17,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserRepo userRepository;
 
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
