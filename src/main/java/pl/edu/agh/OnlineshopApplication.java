@@ -22,3 +22,4 @@ public class OnlineshopApplication {
 	}
 
 }
+//master merged
