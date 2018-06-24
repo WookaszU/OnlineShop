@@ -37,6 +37,10 @@
 //            window.location.assign(url + "/" + data);
 
         }
+
+        function setId(id){
+            document.getElementById("productId").value = id;
+        }
     </script>
 
 </head>
@@ -58,12 +62,17 @@
                     Login</a>
                 </li>
                 <li><a href="#" title="Cart"><img src="/images/cart.png" width="30" height="50"
-                    onclick="getList();return false;" /></a></li>
+                    onclick="window.location.href='/cart'" /></a></li>
             </ul>
         </nav>
 
     </div>
 </header>
+
+<form action="/buyProduct" method="post" id="productIdForm">
+    <input type="hidden" id="productId" name="productId" value="">
+</form>
+
 <div class="flex">
     <th:block th:each="product : ${products}">
         <section>
@@ -75,7 +84,9 @@
                     <li>Price: <span th:utext="${#numbers.formatDecimal(product.price,0,'COMMA',2,'POINT')}"></span> €</li>
                     <li>In Stock</li>
                 </ul>
-                <button class="cart-button" th:onclick="'addToList(\''+${product.id}+'\')'">Add to Cart</button>
+
+                <button class="cart-button" form="productIdForm" type="submit"
+                        th:onclick="'setId(\''+${product.id}+'\')'">Add to Cart</button>
             </aside>
         </section>
     </th:block>

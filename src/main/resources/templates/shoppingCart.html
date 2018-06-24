@@ -27,14 +27,14 @@
             </thead>
             <tbody>
                 <!-- shopping cart contents -->
-                <th:block th:each="product : ${products}">
+                <th:block th:each="productOrder : ${productOrders}">
                     <tr class="product">
                         <td><img src="images/exampleProductPhoto" class="thumb"></td>
-                        <td><input type="number" value="1" min="0" max="99" class="qtyinput"></td>
+                        <td><input type="number" value="${productOrder.quantity}" min="0" max="99" class="qtyinput"></td>
                         <td>
-                            <span th:utext="${product.name}"></span></td>
+                            <span th:utext="${productOrder.productData.name}"></span></td>
                         <td>
-                            <span th:utext="${#numbers.formatDecimal(product.price,0,'COMMA',2,'POINT')}"></span> €
+                            <span th:utext="${#numbers.formatDecimal(productOrder.productData.price,0,'COMMA',2,'POINT')}"></span> €
                         </td>
                         <td><span class="remove"><img src="images/trash.png" alt="X"></span></td>
                     </tr>

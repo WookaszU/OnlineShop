@@ -2,18 +2,22 @@ package pl.edu.agh.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import pl.edu.agh.dao.ProductDAO;
 import pl.edu.agh.entity.Product;
 import pl.edu.agh.model.ProductData;
+import pl.edu.agh.model.ProductOrder;
 import pl.edu.agh.model.ShoppingCart;
 import pl.edu.agh.utils.Utils;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+
+@Controller
 public class MainController {
 
     @Autowired
@@ -64,37 +68,54 @@ public class MainController {
     }
 
 
-    @ResponseBody
     @RequestMapping("/cart")
-    public ModelAndView shoppingCart(@RequestBody String payload) {
-        //HttpServletRequest request,
-        //@ModelAttribute("shopCart")ShoppingCart shoppingCart
+    public ModelAndView shoppingCart(HttpServletRequest request) {
 
-        System.out.println(payload);
+        ShoppingCart cart = Utils.getCartInSession(request);
 
-        List<Product> products = productDAO.getAllProducts();
+        List<ProductOrder> productOrders = new ArrayList<>();
+
+        if(cart != null)
+            for (ProductOrder productOrder : cart.getProductOrders())
+                productOrders.add(productOrder);
+
 
         ModelAndView modelAndView = new ModelAndView("/shoppingCart");
-        modelAndView.addObject("products", products);
+        modelAndView.addObject("productOrders", productOrders);
 
         return modelAndView;
     }
 
 
-    @ResponseBody
     @RequestMapping("/buyProduct")
-    public String buyProduct(HttpServletRequest request,
-                                   @RequestParam(value = "prodid", defaultValue = "")String productId){
-        System.out.println("buy product!");
+    public String buyProduct(HttpServletRequest request){
+
+        String productId = request.getParameter("productId");
 
         if(productId != null && productId.length() > 0){
             Product product = productDAO.getProduct(Integer.parseInt(productId));
 
             if(product != null)
                 Utils.getCartInSession(request).addProduct(new ProductData(product));
+
         }
+
         return "redirect:/cart";
     }
 
+
+    @RequestMapping("/confirmCart")
+    public String addOrder(HttpServletRequest request){
+
+        ShoppingCart cart = Utils.getCartInSession(request);
+
+        List<ProductOrder> productOrders = new ArrayList<>();
+
+        if(cart != null)
+            for (ProductOrder productOrder : cart.getProductOrders())
+                productOrders.add(productOrder);
+
+        return "redirect:/";
+    }
 
 }
