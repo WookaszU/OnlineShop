@@ -1,6 +1,7 @@
 package pl.edu.agh.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,7 +14,8 @@ import pl.edu.agh.utils.Utils;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-@RestController
+@Controller
+//@RestController
 public class MainController {
 
     @Autowired
@@ -21,7 +23,7 @@ public class MainController {
 
     @RequestMapping("/")
     public String index() {
-        return "Hello, it is working!";
+        return "redirect:/products";
     }
 
 
