@@ -25,21 +25,36 @@
                     <th class="fifth">&nbsp;</th>
                 </tr>
             </thead>
+
+            <script>
+                function setId(id){
+                    document.getElementById("productId").value = id;
+                }
+            </script>
+
             <tbody>
                 <!-- shopping cart contents -->
-                <th:block th:each="productOrder : ${productOrders}">
-                    <tr class="product">
-                        <td><img src="images/exampleProductPhoto" class="thumb"></td>
-                        <td><input type="number" value="${productOrder.quantity}" min="0" max="99" class="qtyinput"></td>
-                        <td>
-                            <span th:utext="${productOrder.productData.name}"></span></td>
-                        <td>
-                            <span th:utext="${#numbers.formatDecimal(productOrder.productData.price,0,'COMMA',2,'POINT')}"></span> €
-                        </td>
-                        <td><span class="remove"><img src="images/trash.png" alt="X"></span></td>
-                    </tr>
-                </th:block>
+                <form th:action="@{/confirmCart}" method="post" id="orders" th:object="${cartForm}">
+                    <th:block th:each="productOrder, varStatus: ${cartForm.productOrders}">
+                        <tr class="product">
+                            <td><img src="images/exampleProductPhoto" class="thumb"></td>
 
+                            <input type="hidden"
+                                   th:name="|productOrders[${varStatus.index}].productData.productId|"
+                                   th:value="${productOrder.productData.productId}" />
+
+                            <td><input type="number"
+                                       th:name="|productOrders[${varStatus.index}].quantity|"
+                                       th:value="${productOrder.quantity}" min="1" max="99" class="qtyinput"></td>
+                            <td>
+                                <span th:utext="${productOrder.productData.name}"></span></td>
+                            <td>
+                                <span th:utext="${#numbers.formatDecimal(productOrder.productData.price,0,'COMMA',2,'POINT')}"></span> €
+                            </td>
+                            <td><span class="remove"><img src="images/trash.png" alt="X"></span></td>
+                        </tr>
+                    </th:block>
+                </form>
                 <!-- tax + subtotal -->
 
                 <tr class="extracosts">
@@ -58,7 +73,8 @@
                 <!-- checkout btn -->
 
                 <tr class="checkoutrow">
-                    <td colspan="5" class="checkout"><button id="submitbtn">Checkout Now!</button></td>
+                    <td colspan="5" class="checkout">
+                        <button id="submitbtn" form="orders" type="submit">Checkout Now!</button></td>
                 </tr>
 
             </tbody>

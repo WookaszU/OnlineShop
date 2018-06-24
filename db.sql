@@ -18,15 +18,21 @@ create table ACCOUNTS
 
 create table ORDERS
 (
-  ID               INTEGER not null AUTO_INCREMENT,
-  AMOUNT           double precision not null,
-  CUSTOMER_ADDRESS VARCHAR(255) not null,
-  CUSTOMER_EMAIL   VARCHAR(128) not null,
-  CUSTOMER_NAME    VARCHAR(255) not null,
-  CUSTOMER_PHONE   VARCHAR(128) not null,
+  ORDER_ID         INTEGER not null AUTO_INCREMENT,
+  USER_ID          INTEGER not null,
   ORDER_DATE       datetime not null,
-  ORDER_NUM        INTEGER not null
+  PRIMARY KEY(ID)
 ) ;
+
+create table ORDERED_PRODUCTS
+(
+  ID               INTEGER not null AUTO_INCREMENT,
+  PRODUCT_ID       INTEGER not null,
+  QUANTITY         INTEGER not null,
+  ORDER_ID         INTEGER not null,
+  PRIMARY KEY(ID)
+);
+
 # ----------------------------------------------------------------------------------------------
 
 

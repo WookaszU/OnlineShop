@@ -9,6 +9,10 @@ public class ProductData {
     private double price;
     private byte[] image;
 
+    public ProductData(){
+
+    }
+
     public ProductData(pl.edu.agh.entity.Product product) {
         this.productId = product.getId();
         this.name = product.getName();
