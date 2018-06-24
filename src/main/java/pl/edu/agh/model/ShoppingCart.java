@@ -28,7 +28,7 @@ public class ShoppingCart{
 
     private ProductOrder findProductOrder(int productId){
         for(ProductOrder order: productOrders)
-            if(order.getProductData().equals(productId))
+            if(order.getProductData().getProductId() == (productId))
                 return order;
         return null;
     }
@@ -40,7 +40,6 @@ public class ShoppingCart{
             productOrders.add(new ProductOrder(productData, 1));
         else
             productOrder.setQuantity(productOrder.getQuantity() + 1);
-
     }
 
     public void updateQuantity(ProductData productData, int quantity){

@@ -41,4 +41,5 @@ public class ProductDAO {
         List<Product> products = query.list();
         return products;
     }
+
 }
