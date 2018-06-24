@@ -6,6 +6,7 @@ D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\dao\ProductDAO.
 D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\OnlineshopApplication.java
 D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\model\CustomerData.java
 D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\constraint\FieldMatch.java
+D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\repository\UserRepo.java
 D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\repository\UserRepository.java
 D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\service\UserService.java
 D:\Informatyka\Semestr 6\TAI\OnlineShop\src\main\java\pl\edu\agh\model\ProductData.java
