@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-US">
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>Shopping cart</title>
+    <!--<link rel="stylesheet" type="text/css" media="all" href="css/styles.css" mce_href="css/styles.css">-->
+
+</head>
+
+<body>
+<div id="w">
+    <header id="title">
+        <h1>Shopping cart</h1>
+    </header>
+    <div id="page">
+        <table id="cart">
+            <thead>
+                <tr>
+                    <th class="first">Photo</th>
+                    <th class="second">Quantity</th>
+                    <th class="third">Product</th>
+                    <th class="fourth">Line Total</th>
+                    <th class="fifth">&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- shopping cart contents -->
+                <th:block th:each="productOrder : ${productOrders}">
+                    <tr class="product">
+                        <td><img src="images/exampleProductPhoto" class="thumb"></td>
+                        <td><input type="number" value="${productOrder.quantity}" min="0" max="99" class="qtyinput"></td>
+                        <td>
+                            <span th:utext="${productOrder.productData.name}"></span></td>
+                        <td>
+                            <span th:utext="${#numbers.formatDecimal(productOrder.productData.price,0,'COMMA',2,'POINT')}"></span> €
+                        </td>
+                        <td><span class="remove"><img src="images/trash.png" alt="X"></span></td>
+                    </tr>
+                </th:block>
+
+                <!-- tax + subtotal -->
+
+                <tr class="extracosts">
+                    <td class="light">Shipping &amp; Tax</td>
+                    <td colspan="2" class="light"></td>
+                    <td>$35.00</td>
+                    <td>&nbsp;</td>
+                </tr>
+
+                <tr class="totalprice">
+                    <td class="light">Total:</td>
+                    <td colspan="2">&nbsp;</td>
+                    <td colspan="2"><span class="thick">$225.45</span></td>
+                </tr>
+
+                <!-- checkout btn -->
+
+                <tr class="checkoutrow">
+                    <td colspan="5" class="checkout"><button id="submitbtn">Checkout Now!</button></td>
+                </tr>
+
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+</body>
+
+</html>
+
