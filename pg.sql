@@ -67,16 +67,16 @@ create table USERS_ROLES(
 
 insert into products(NAME, DESCRIPTION, PRICE, QUANTITY, IMAGE) values ('PC MSI Nightblade MI3', 'Procesor: Intel Core i5 7400
 System operacyjny: Windows 10 Home Edition
-Karta graficzna: nVIDIA® GeForce GTX1050', 2999, 10, lo_import('D:\Informatyka\Semestr 6\TAI\OnlineShop\db_imgs\PC.jpg'));
+Karta graficzna: nVIDIA® GeForce GTX1050', 2999, 10, null);
 
-insert into products(NAME, DESCRIPTION, PRICE, QUANTITY, IMAGE) values ('Laptop Dell E6230', 'Procesor: i5 3.2 GHz, 2 rdzenie Pamięć RAM: 8 GB Dysk twardy: SSD 128 GB', 1099, 15, lo_import('D:\Informatyka\Semestr 6\TAI\OnlineShop\db_imgs\Laptop.jpg'));
+insert into products(NAME, DESCRIPTION, PRICE, QUANTITY, IMAGE) values ('Laptop Dell E6230', 'Procesor: i5 3.2 GHz, 2 rdzenie Pamięć RAM: 8 GB Dysk twardy: SSD 128 GB', 1099, 15, null);
 
 insert into products(NAME, DESCRIPTION, PRICE, QUANTITY, IMAGE) values ('Słuchawki nauszne JBL', 'Dynamika [dB]: 107
 Impedancja [Ω]: 32
-Pasmo przenoszenia [Hz]: 20 - 20k', 106, 200, lo_import('D:\Informatyka\Semestr 6\TAI\OnlineShop\db_imgs\Headphones.jpg'));
+Pasmo przenoszenia [Hz]: 20 - 20k', 106, 200, null);
 
 insert into products(NAME, DESCRIPTION, PRICE, QUANTITY, IMAGE) values ('Głośnik Boombox', 'Komunikacja: bluetooth
 Moc (W): 10
-Zasilanie: akumulatorowe', 61, 80, lo_import('D:\Informatyka\Semestr 6\TAI\OnlineShop\db_imgs\Speakers.jpg'));
+Zasilanie: akumulatorowe', 61, 80, null);
 
 
