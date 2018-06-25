@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Products</title>
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web:200,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/styles.css}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/loginStyle.css}">
+
+
+    <!--&lt;!&ndash;Background set&ndash;&gt;-->
+    <!--<style>-->
+        <!--body {-->
+            <!--background-image: url("/images/koalla.jpg");-->
+            <!--background-repeat: no-repeat;-->
+        <!--}-->
+    <!--</style>-->
+
+    <script>
+        var list = [];
+
+        function addToList(value){
+            list.push(value);
+        }
+
+        function getList(){
+            var xhr = new XMLHttpRequest();
+            var url = "/cart";
+            xhr.open("POST", url, true);
+
+            var data = JSON.stringify(list);
+            xhr.send(data);
+
+//            window.location.assign(url + "/" + data);
+
+        }
+
+        function setId(id){
+            document.getElementById("productId").value = id;
+        }
+    </script>
+
+</head>
+<body>
+
+<header>
+    <!--Musialem headera przerzucic tutaj, zeby jakos przekazac liste dodanych do koszyka produktow, pewnie da sie inaczej-->
+    <!--I jak on jest tutaj to cos sie rozjezdza format okienka do logowania....-->
+    <!--<th:block th:include="fragments/header">Header</th:block>-->
+    <div class="header-container" xmlns:th="http://www.thymeleaf.org">
+
+        <nav>
+            <ul>
+                <!--class="active"-->
+                <li><a href="#" title="Logo"><img src="/images/shopLogo.png"/></a></li>
+                <li><a href="#" title="Products">Products</a></li>
+                <li><a href="#" title="Contact">Contact</a></li>
+                <li><a href="#" title="Login" onclick="document.getElementById('id01').style.display='block'">
+                    Login</a>
+                </li>
+                <li><a href="#" title="Cart"><img src="/images/cart.png" width="30" height="50"
+                    onclick="window.location.href='/cart'" /></a></li>
+            </ul>
+        </nav>
+
+    </div>
+</header>
+
+<form action="/buyProduct" method="post" id="productIdForm">
+    <input type="hidden" id="productId" name="productId" value="">
+</form>
+
+<div class="flex">
+    <th:block th:each="product : ${products}">
+        <section>
+            <!--<img src="/images/exampleProductPhoto.png" alt="ProductPhoto" />-->
+            <img class="info" th:attr="src=@{'data:image/jpeg;base64,'+${product.image}}" />
+            <h2><span th:utext="${product.name}"></span></h2>
+            <p><span th:utext="${product.description}"></span></p>
+            <aside>
+                <ul>
+                    <li>Cena: <span th:utext="${#numbers.formatDecimal(product.price,0,'COMMA',2,'POINT')}"></span></li>
+                    <li>Sztuk: <span th:utext="${product.quantity}"></span></li>
+                </ul>
+
+                <button class="cart-button" form="productIdForm" type="submit"
+                        th:onclick="'setId(\''+${product.id}+'\')'">Do koszyka</button>
+            </aside>
+        </section>
+    </th:block>
+</div>
+</body>
+</html>
+
+
+
+
+<!-- The Modal -->
+<div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'"
+        class="close" title="Close Modal">&times;</span>
+
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+        <div class="container">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancel-button">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+    </form>
+</div>

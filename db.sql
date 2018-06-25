@@ -21,7 +21,7 @@ create table ORDERS
   ORDER_ID         INTEGER not null AUTO_INCREMENT,
   USER_ID          INTEGER not null,
   ORDER_DATE       datetime not null,
-  PRIMARY KEY(ID)
+  PRIMARY KEY(ORDER_ID)
 ) ;
 
 create table ORDERED_PRODUCTS
