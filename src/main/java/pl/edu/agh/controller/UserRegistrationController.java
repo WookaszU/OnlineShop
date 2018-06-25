@@ -1,6 +1,6 @@
 package pl.edu.agh.controller;
 
-import pl.edu.agh.entity.User;
+import pl.edu.agh.entity.Users;
 import pl.edu.agh.service.UserService;
 import pl.edu.agh.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,7 @@ public class UserRegistrationController {
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
                                       BindingResult result){
 
-        User existing = userService.findByEmail(userDto.getEmail());
+        Users existing = userService.findByEmail(userDto.getEmail());
         if (existing != null){
             result.rejectValue("email", null, "There is already an account registered with that email");
         }

@@ -1,12 +1,12 @@
 package pl.edu.agh.repository;
 
-import pl.edu.agh.entity.User;
+import pl.edu.agh.entity.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<Users, Long> {
 
-    User findByEmail(String email);
+    Users findByEmail(String email);
 
 }

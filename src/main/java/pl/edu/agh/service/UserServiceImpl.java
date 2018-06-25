@@ -1,9 +1,8 @@
 package pl.edu.agh.service;
 
 import pl.edu.agh.entity.Role;
-import pl.edu.agh.entity.User;
+import pl.edu.agh.entity.Users;
 import pl.edu.agh.repository.UserRepo;
-import pl.edu.agh.repository.UserRepository;
 import pl.edu.agh.dto.UserRegistrationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -28,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(email);
+        Users user = userRepository.findByEmail(email);
         if (user == null){
             throw new UsernameNotFoundException("Invalid username or password.");
         }
@@ -37,12 +36,12 @@ public class UserServiceImpl implements UserService {
                 mapRolesToAuthorities(user.getRoles()));
     }
 
-    public User findByEmail(String email){
+    public Users findByEmail(String email){
         return userRepository.findByEmail(email);
     }
 
-    public User save(UserRegistrationDto registration){
-        User user = new User();
+    public Users save(UserRegistrationDto registration){
+        Users user = new Users();
         user.setFirstName(registration.getFirstName());
         user.setLastName(registration.getLastName());
         user.setEmail(registration.getEmail());

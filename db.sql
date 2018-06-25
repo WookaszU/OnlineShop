@@ -25,7 +25,8 @@ create table ORDERS
   CUSTOMER_NAME    VARCHAR(255) not null,
   CUSTOMER_PHONE   VARCHAR(128) not null,
   ORDER_DATE       datetime not null,
-  ORDER_NUM        INTEGER not null
+  ORDER_NUM        INTEGER not null,
+  PRIMARY KEY(ID)
 ) ;
 # ----------------------------------------------------------------------------------------------
 
