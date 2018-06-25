@@ -5,7 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import pl.edu.agh.dao.OrderDAO;
 import pl.edu.agh.dao.ProductDAO;
+import pl.edu.agh.dao.OrderedProductsDAO;
+import pl.edu.agh.entity.Order;
 import pl.edu.agh.entity.Product;
 import pl.edu.agh.model.ProductData;
 import pl.edu.agh.model.ProductOrder;
@@ -17,11 +20,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-//@RestController
 public class MainController {
 
     @Autowired
     private ProductDAO productDAO;
+
+    @Autowired
+    private OrderDAO orderDAO;
+
+    @Autowired
+    private OrderedProductsDAO orderedProductsDAO;
 
     @RequestMapping("/")
     public String index() {
@@ -92,7 +100,8 @@ public class MainController {
 
 
         ModelAndView modelAndView = new ModelAndView("/shoppingCart");
-        modelAndView.addObject("productOrders", productOrders);
+        //modelAndView.addObject("productOrders", productOrders);
+        modelAndView.addObject("cartForm", cart);
 
         return modelAndView;
     }
@@ -115,16 +124,16 @@ public class MainController {
     }
 
 
-    @RequestMapping("/confirmCart")
-    public String addOrder(HttpServletRequest request){
+    @PostMapping("/confirmCart")
+    public String addOrder(HttpServletRequest request,
+                           @ModelAttribute("cartForm") ShoppingCart cartForm){
 
         ShoppingCart cart = Utils.getCartInSession(request);
 
-        List<ProductOrder> productOrders = new ArrayList<>();
+        cart.updateCart(cartForm);
 
-        if(cart != null)
-            for (ProductOrder productOrder : cart.getProductOrders())
-                productOrders.add(productOrder);
+        int orderId = orderDAO.addOrder(new Order(1, new java.util.Date()));
+        orderedProductsDAO.addProductsOrder(orderId, cart);
 
         return "redirect:/";
     }

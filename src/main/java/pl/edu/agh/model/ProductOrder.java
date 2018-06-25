@@ -6,6 +6,9 @@ public class ProductOrder {
     private ProductData productData;
     private int quantity;
 
+    public ProductOrder(){
+
+    }
 
     public ProductOrder(ProductData productData, int quantity) {
         this.productData = productData;

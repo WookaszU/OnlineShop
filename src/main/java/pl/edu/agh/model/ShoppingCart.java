@@ -9,7 +9,7 @@ public class ShoppingCart{
     private int orderId;
     private CustomerData customerData;
 
-    private final List<ProductOrder> productOrders = new ArrayList<>();
+    private final List<ProductOrder> productOrders = new ArrayList<ProductOrder>();
 
     public ShoppingCart(){
     }
@@ -42,8 +42,8 @@ public class ShoppingCart{
             productOrder.setQuantity(productOrder.getQuantity() + 1);
     }
 
-    public void updateQuantity(ProductData productData, int quantity){
-        ProductOrder productOrder = findProductOrder(productData.getProductId());
+    public void updateQuantity(int productId, int quantity){
+        ProductOrder productOrder = findProductOrder(productId);
 
         if(productOrder != null){
             if(quantity > 0)
@@ -53,17 +53,39 @@ public class ShoppingCart{
         }
     }
 
-    public void removeProduct(ProductData productData){
-        productOrders.remove(findProductOrder(productData.getProductId()));
+    public void removeProduct(int productId){
+        productOrders.remove(findProductOrder(productId));
     }
 
-    public void updateQuantity(ShoppingCart form){
+    private boolean orderExist(int productId, List<ProductOrder> productOrders){
+        for(ProductOrder order: productOrders){
+            if(order.getProductData().getProductId() == productId)
+                return true;
+        }
+        return false;
+    }
+
+    private void updateProductsQuantities(List<ProductOrder> productOrders){
+        for(ProductOrder order: productOrders){
+            this.updateQuantity(order.getProductData().getProductId(), order.getQuantity());
+        }
+    }
+
+    private void removeDeletedProducts(List<ProductOrder> productOrders){
+        for(ProductOrder order: this.productOrders){
+            int productId = order.getProductData().getProductId();
+            if(!orderExist(productId, productOrders))
+                removeProduct(productId);
+        }
+    }
+
+    public void updateCart(ShoppingCart form){
 
         if(form != null){
             List<ProductOrder> productOrders = form.getProductOrders();
-            for(ProductOrder order: productOrders){
-                this.updateQuantity(order.getProductData(), order.getQuantity());
-            }
+
+            updateProductsQuantities(productOrders);
+            removeDeletedProducts(productOrders);
         }
     }
 
